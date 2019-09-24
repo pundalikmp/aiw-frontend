@@ -1,0 +1,57 @@
+<div class="book-vehicle">
+  <h5>Please fill the required details to book a Earth mover</h5>
+  <mat-card>
+    <form [formGroup]="vehicleForm" fxLayout="row wrap" class="book-vehicle-form" fxLayoutAlign="space-between"
+      fxLayoutGap="10px">
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Firstname" formControlName="firstName" required />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Lastname" formControlName="lastName" required />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Mobile" formControlName="mobile" required />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Email" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Address" formControlName="address" required />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <mat-label>Select vehicle</mat-label>
+        <mat-select formControlName="vehicle" (selectionChange)="onVehicleSelection($event)">
+          <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">
+            {{vehicle}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div fxFlex="100" *ngIf="vehicleForm?.value?.vehicle === 'Water tanker'" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" style="padding: 10px 0px"> 
+          <label id="tankerType">Please select water tanker type :</label>
+          <mat-radio-group formControlName="tankerType" (change)="onTypeChange()" aria-labelledby="tankerType" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+              <mat-radio-button value="1000">With water</mat-radio-button>
+              <mat-radio-button value="650">Only tanker</mat-radio-button>
+            </mat-radio-group>
+      </div>
+      <mat-form-field fxFlex="48" matTooltip="Price auto filled after vehicle selection" matTooltipPosition="after">
+        <input matInput placeholder="Price per/hour" formControlName="price" required />
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+          <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" placeholder="Choose a date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      <mat-form-field fxFlex="100">
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+      <div fxFlex="100">
+        <mat-checkbox formControlName="decl">I aceept the terms & conditions</mat-checkbox>
+      </div>
+
+      <div fxFlex="100" fxLayoutAlign="center center">
+        <button mat-raised-button (click)="onBook()" class="book-vehicle-btn" [disabled]="!vehicleForm.valid">Book
+          Vehicle</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

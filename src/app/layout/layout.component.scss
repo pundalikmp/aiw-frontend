@@ -1,0 +1,33 @@
+.layout-container {
+    height: 100vh;
+    .menu-icon-btn {
+        margin-left: -4px;
+    }
+    .profile-icon-btn {
+         ::ng-deep .material-icons {
+            font-size: 36px;
+            margin-right: 10px;
+        }
+    }
+    .layout-content {
+        margin-left: 64px;
+        padding: 20px;
+        margin-top: 64px;
+    }
+}
+
+::ng-deep .mat-toolbar {
+    background: linear-gradient(-90deg, red -40%, yellow);
+    position: fixed;
+}
+
+.layout-sidenav-container {
+    width: 64px;
+    background: rgba(0, 0, 0, 0.04);
+    top: 64px;
+    text-align: center;
+     ::ng-deep .mat-drawer-inner-container {
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html body {
+    margin: 0 auto;
+}
+
+.mat-tab-label-active {
+    background: linear-gradient(-90deg, red -40%, yellow);
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+}
+
+.mat-ink-bar {
+    background: linear-gradient(-90deg, red -40%, yellow);
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #ff7300;
+}
+
+.book-vehicle-dialog {
+    .mat-dialog-container {
+        min-width: 30vw;
+        min-height: 30vh;
+        width: 40vw;
+    }
+}
+
+.register-dialog {
+    .mat-dialog-container {
+        min-width: 30vw;
+        min-height: 30vh;
+        width: 50vw;
+        padding: 0;
+        border-radius: 10px;
+    }
+    .mat-raised-button {
+        line-height: 30px;
+    }
+}

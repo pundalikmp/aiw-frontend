@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px" class="dialog">
+  <mat-icon *ngIf="data?.status" class="success-dialog-icon">done</mat-icon>
+  <mat-icon *ngIf="!data?.status" class="error-dialog-icon">clear</mat-icon>
+  <span>{{data?.message}}</span>
+  <button mat-raised-button (click)="onClose()">CLOSE</button>
+</div>
