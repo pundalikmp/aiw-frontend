@@ -1,0 +1,16 @@
+<app-layout>
+    <app-drawer>
+        <div fxLayout="column" class="sidenav-list-item" fxLayoutGap="20px">
+            <button mat-icon-button matTooltip="Home" matTooltipPosition="after" (click)="onDashboard()">
+                <mat-icon>home</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="About Us" matTooltipPosition="after" (click)="onProfile()">
+                <mat-icon>help_outline</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Sign out" (click)="onLogout()" matTooltipPosition="after">
+                <mat-icon>power_settings_new</mat-icon>
+            </button>
+        </div>
+    </app-drawer>
+    <router-outlet></router-outlet>
+</app-layout>    

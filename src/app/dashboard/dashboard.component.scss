@@ -1,0 +1,7 @@
+::ng-deep .mat-raised-button:hover {
+    background: linear-gradient(-90deg, red -40%, yellow);
+}
+
+::ng-deep .mat-raised-button {
+    line-height: 30px;
+}

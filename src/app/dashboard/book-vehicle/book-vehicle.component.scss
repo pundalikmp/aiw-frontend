@@ -1,0 +1,13 @@
+.book-vehicle {
+    .book-vehicle-btn {
+        font-weight: 700;
+    }
+    .book-vehicle-btn:not([disabled]):hover {
+        background: linear-gradient(-90deg, red -40%, yellow);
+        color: white
+    }
+    ::ng-deep .mat-card {
+        border-top: 4px solid #febe15;
+        font-size: 0.9em;
+    }
+}

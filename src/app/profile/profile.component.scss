@@ -1,0 +1,27 @@
+.profile {
+    .profile-avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+
+    ::ng-deep .mat-card {
+        width: 60%;
+        border-top: 4px solid #febe15;
+
+        @media screen and (max-width: 1200px) {
+            width: 95%;
+        }
+    }
+
+    .avatar-icon__edit {
+        background: linear-gradient(-90deg, red -40%, yellow);
+        position: absolute;
+        top: 74px;
+        border-radius: 50%;
+        left: 40px;
+    }
+    .avatar-icon__edit-default {
+        top: 0;
+    }
+}

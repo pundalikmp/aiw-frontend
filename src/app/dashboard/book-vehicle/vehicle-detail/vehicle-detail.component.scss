@@ -1,0 +1,20 @@
+.vehicle-detail {
+ ::ng-deep .mat-header-row {
+     background: rgba(0, 0, 0, 0.2);
+ }
+ ::ng-deep .mat-header-cell {
+     font-weight: 700;
+ }
+ ::ng-deep .mat-card {
+    border-top: 4px solid #febe15;
+    font-size: 0.9em;
+}
+}
+.no-data-found {
+    height: 250px;
+    width: 100%;
+    text-align: center;
+    color: #e6003c;
+}
+
+

@@ -1,0 +1,104 @@
+.login {
+    // background-image: url('../../jcbbg.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .login-card {
+        width: 32vw;
+        background: white;
+        // color: black;
+        position: absolute;
+        top: 6%;
+        right: 1%;
+        border-radius: 10px;
+
+        @media screen and (max-width: 320px) {
+            width: 90vw;
+            position: relative;
+            top: unset;
+            right: unset;
+        }
+
+        @media screen and (min-width: 321px) and (max-width: 500px) {
+            width: 75vw;
+            position: relative;
+            top: unset;
+            right: unset;
+        }
+
+        @media screen and (min-width: 501px) and (max-width: 768px) {
+            width: 50vw;
+            position: relative;
+            top: unset;
+            right: unset;
+        }
+    }
+
+    .login-card:hover {
+        box-shadow: 0 0px 1px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    ::ng-deep .mat-raised-button {
+        line-height: 30px;
+        font-weight: bold;
+
+    }
+
+    .login-btn:hover {
+        background: linear-gradient(-90deg, red -40%, yellow);
+    }
+
+    .login-skip-link {
+        cursor: pointer;
+        text-decoration: underline;
+        font-size: 12px
+    }
+
+    .login-theme {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+    }
+
+    ::ng-deep .mat-radio-label-content {
+        padding-left: 4px;
+    }
+
+    ::ng-deep .mat-radio-group {
+        font-size: 0.8em;
+    }
+
+    ::ng-deep .mat-radio-container {
+        height: 16px;
+        width: 16px;
+    }
+
+    ::ng-deep .mat-radio-outer-circle {
+        height: 16px;
+        width: 16px;
+    }
+
+    ::ng-deep .mat-radio-inner-circle {
+        height: 16px;
+        width: 16px;
+    }
+}
+
+.skip-login {
+    background: rgba(42, 241, 20, 0.4);
+}
+
+.register-note {
+    font-size: 13px;
+    background: linear-gradient(333deg, red, green);
+    background-clip: text;
+    color: transparent;
+}
+
+.login-status__text {
+    margin-top: -10px;
+    font-size: 12px;
+}
