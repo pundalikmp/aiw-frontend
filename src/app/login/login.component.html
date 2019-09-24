@@ -1,0 +1,41 @@
+<div class="login" fxFlex fxLayoutAlign="center center" [ngStyle]="{ 'background-image': currentTheme }">
+    <div fxLayout="column" class="login-theme" [ngClass]="getThemeClass()">
+        <h4>Change theme</h4>
+        <div>
+            <mat-radio-group fxLayoutGap="14px">
+                <mat-radio-button *ngFor="let theme of vehicles" [value]="theme" (click)="onThemeClick(theme)">
+                    {{ theme }}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+    <mat-card class="login-card" [ngClass]="getClass()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <h4>
+            AIW Login
+        </h4>
+            <form [formGroup]="loginForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="100">
+                    <input matInput placeholder="username" formControlName="username" required />
+                    <mat-error *ngIf="loginForm.controls.username.errors">Username length must be 8 to 15</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <input matInput placeholder="password" formControlName="password" type="password" required />
+                    <mat-error *ngIf="loginForm.controls.password.errors">Password length must be 8 to 15</mat-error>
+            </mat-form-field>
+            <div class="login-status__text">
+                    <mat-error *ngIf="loginMessage">{{loginMessage}}</mat-error>
+
+            </div>
+
+            </form>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button mat-raised-button [disabled]="!loginForm.valid" (click)="signIn()" class="login-btn">
+                SIGNIN
+            </button>
+            <button mat-raised-button (click)="onSignUp()" class="login-btn">SIGNUP</button>
+            <!-- <button mat-raised-button (click)="onSkip()" class="skip-login">SKIP</button> -->
+        </div>
+        <span class="register-note">Not a member ? Please signup..!</span>
+    </mat-card>
+</div>

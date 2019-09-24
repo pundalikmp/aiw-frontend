@@ -1,0 +1,29 @@
+.dialog {
+    position: relative;
+
+    .success-dialog-icon {
+        height: 40px;
+        width: 40px;
+        font-size: 40px;
+        border: 2px solid #6caf2a;
+        border-radius: 50%;
+        color: #6caf2a;
+    }
+
+    .error-dialog-icon {
+        @extend .success-dialog-icon;
+        color: #f44336;
+        border: 1px solid #f44336;
+    }
+
+    ::ng-deep .mat-raised-button {
+        line-height: 30px;
+        font-weight: 700;
+    }
+
+    ::ng-deep .mat-raised-button:hover {
+        background: linear-gradient(-90deg, red -40%, yellow);
+        color: white;
+        font-weight: 700;
+    }
+}

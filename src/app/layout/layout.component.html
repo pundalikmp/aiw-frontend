@@ -1,0 +1,47 @@
+<div class="layout">
+  <mat-sidenav-container class="layout-container" [hasBackdrop]="false">
+    <mat-sidenav
+      [opened]="isOpen"
+      class="layout-sidenav-container"
+      fxLayoutAlign="center center"
+    >
+      <ng-content select="app-drawer"></ng-content>
+    </mat-sidenav>
+    <mat-sidenav-content
+      class="layout-content-container"
+      [ngClass]="{ 'sidenav-open': isOpen }"
+    >
+      <mat-toolbar>
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+          <button
+            mat-icon-button
+            (click)="toggleSidenav()"
+            class="menu-icon-btn"
+            matTooltip="Toggle side menu"
+            matTooltipPosition="after"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div fxLayout="row">
+            <!-- <img src="../../assets/resources/aiw.jpg" alt="AIW"> -->
+            <h2>AIW Earth Movers</h2>
+          </div>
+          <button
+            mat-icon-button
+            (click)="onProfile()"
+            class="profile-icon-btn"
+            matTooltip="User profile"
+            matTooltipPosition="after"
+          >
+            <mat-icon *ngIf="!avatarUrl">account_circle</mat-icon>
+            <img *ngIf="avatarUrl" style="height: 36px; width: 36px; border-radius: 50%" src="data:image/jpeg;base64,{{ avatarUrl }}">
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <app-loader></app-loader>
+      <div class="layout-content">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

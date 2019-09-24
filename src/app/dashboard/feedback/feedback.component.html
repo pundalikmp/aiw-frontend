@@ -1,0 +1,45 @@
+<div class="feedback">
+    <h5>Please give suggestions</h5>
+  <mat-card>
+    <form [formGroup]="feedbackForm" fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-form-field fxFlex="75">
+        <mat-label>Select vehicle</mat-label>
+        <mat-select formControlName="vehicle">
+          <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">
+            {{vehicle}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="75">
+        <mat-label>Select feedback</mat-label>
+        <mat-select formControlName="vehicleFeedback">
+          <mat-option *ngFor="let feed of feedback" [value]="feed">
+            {{feed}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="75">
+        <mat-label>Driver feedback</mat-label>
+        <mat-select formControlName="driverFeedback">
+          <mat-option *ngFor="let feed of feedback" [value]="feed">
+            {{feed}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="75">
+        <mat-label>Application feedback</mat-label>
+        <mat-select formControlName="appFeedback">
+          <mat-option *ngFor="let feed of feedback" [value]="feed">
+            {{feed}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="75">
+        <textarea matInput placeholder="Please suggest App improvements" formControlName="description"></textarea>
+      </mat-form-field>
+    </form>
+    <div fxLayoutAlign="center center">
+      <button mat-raised-button fxFlex="30" [disabled]="!feedbackForm.valid" (click)="onSubmit()">Submit Feedback</button>
+    </div>
+  </mat-card>
+</div>
