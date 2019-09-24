@@ -95,10 +95,10 @@ export class ProfileComponent implements OnInit {
     this.loaderService.show();
     this.dataService.uploadAvatar(uploadData).subscribe(
       result => {
+        this.loaderService.hide();
         this.isChange = !this.isChange;
         this.imageSrc = result.avatar;
         this.loaderService.setAvatar(this.imageSrc);
-        this.loaderService.hide();
         if (result) {
           const dialogData: DialogData = <DialogData>{
             message: "Profile pic uploaded successfully.",
@@ -158,11 +158,11 @@ export class ProfileComponent implements OnInit {
 
     this.loaderService.show();
     this.dataService.registerUser(input).subscribe(result => {
+      this.loaderService.hide();
       this.profileForm.setValue({
         mobile: input.mobile,
         address: input.address
       });
-      this.loaderService.hide();
     }, () => {
       this.loaderService.hide();
     });
