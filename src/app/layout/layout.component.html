@@ -33,7 +33,11 @@
             matTooltip="User profile"
             matTooltipPosition="after"
           >
-            <mat-icon *ngIf="!avatarUrl">account_circle</mat-icon>
+          <img *ngIf="!avatarUrl"
+          src="./assets/resources/aiw3.jpg"
+          alt="avatar"
+          style="height: 36px; width: 36px; border-radius: 50%"
+        />
             <img *ngIf="avatarUrl" style="height: 36px; width: 36px; border-radius: 50%" src="data:image/jpeg;base64,{{ avatarUrl }}">
           </button>
         </mat-toolbar-row>

@@ -17,8 +17,10 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.loaderService.show();
     this.loaderService.avatarState.subscribe(avatar => {
-      this.avatarUrl = avatar;
       this.loaderService.hide();
+      if (avatar) {
+        this.avatarUrl = avatar;
+      }
     }, () => {
       this.loaderService.hide();
     })

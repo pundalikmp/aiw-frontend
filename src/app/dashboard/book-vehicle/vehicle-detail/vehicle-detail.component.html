@@ -59,11 +59,11 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-    <div>
-      <mat-paginator #paginator></mat-paginator>
-    </div>
     <div class="no-data-found" *ngIf="!isDataAvailable" fxLayoutAlign="center center">
       <h3>No Data Found</h3>
+    </div>
+    <div>
+      <mat-paginator #paginator></mat-paginator>
     </div>
   </mat-card>
 </div>
