@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/dist/alswel'));
 
 app.listen(process.env.PORT || 8080);
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/dist/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/alswel/index.html'));
 })
 
 console.log('Server liestening on port', process.env.PORT);
