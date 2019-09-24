@@ -18,7 +18,9 @@ export class DashboardComponent implements OnInit {
     this.dataService.downloadAvatar().subscribe(
       data => {
         this.loaderService.hide();
-        this.loaderService.setAvatar(data.data[0].avatar);
+        if (data!.data[0] && data!.data[0]!.avatar) {
+          this.loaderService.setAvatar(data.data[0].avatar);
+        }
       },
       () => {
         this.loaderService.hide();

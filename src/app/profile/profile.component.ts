@@ -97,8 +97,10 @@ export class ProfileComponent implements OnInit {
       result => {
         this.loaderService.hide();
         this.isChange = !this.isChange;
-        this.imageSrc = result.avatar;
-        this.loaderService.setAvatar(this.imageSrc);
+        if (result.avatar) {
+          this.imageSrc = result.avatar;
+          this.loaderService.setAvatar(this.imageSrc);
+      }
         if (result) {
           const dialogData: DialogData = <DialogData>{
             message: "Profile pic uploaded successfully.",
@@ -138,7 +140,9 @@ export class ProfileComponent implements OnInit {
     this.loaderService.avatarState.subscribe(
       data => {
         this.loaderService.hide();
-        this.imageSrc = data;
+        if (data) {
+          this.imageSrc = data;
+        }
       },
       () => {
         this.loaderService.hide();

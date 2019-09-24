@@ -122,6 +122,7 @@ export class LoginComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+        this.loaderService.show();
         const userInput: Register = <Register>{
           username: data.username,
           pass: data.password,
@@ -129,9 +130,9 @@ export class LoginComponent implements OnInit {
           lastName: data.lastName,
           email: data.email
         };
-        this.loaderService.show();
         this.dataservice.registerUser(userInput).subscribe(
           result => {
+            this.loaderService.hide();
             this.dialog.open(DialogComponent, {
               data: {
                 message: 'Registration successfull. Please login using registered credentials.',
@@ -139,16 +140,15 @@ export class LoginComponent implements OnInit {
               }
             });
             
-            this.loaderService.hide();
           },
           error => {
+            this.loaderService.hide();
             this.dialog.open(DialogComponent, {
               data: {
                 message: 'Something went wrong, username already exists, please try other',
                 status: false
               }
             });
-            this.loaderService.hide();
           }
         );
       }
