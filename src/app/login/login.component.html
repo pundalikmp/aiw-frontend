@@ -20,7 +20,7 @@
                     <mat-error *ngIf="loginForm.controls.username.errors">Username length must be 8 to 15</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="100">
-                    <input matInput placeholder="password" formControlName="password" required />
+                    <input matInput placeholder="password" formControlName="password" type="password" required />
                     <mat-error *ngIf="loginForm.controls.password.errors">Password length must be 8 to 15</mat-error>
             </mat-form-field>
             <div class="login-status__text">
