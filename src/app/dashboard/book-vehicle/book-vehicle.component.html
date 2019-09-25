@@ -3,22 +3,22 @@
   <mat-card>
     <form [formGroup]="vehicleForm" fxLayout="row wrap" class="book-vehicle-form" fxLayoutAlign="space-between"
       fxLayoutGap="10px">
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <input matInput placeholder="Firstname" formControlName="firstName" required />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <input matInput placeholder="Lastname" formControlName="lastName" required />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <input matInput placeholder="Mobile" formControlName="mobile" required />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <input matInput placeholder="Email" formControlName="email" />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <input matInput placeholder="Address" formControlName="address" required />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
         <mat-label>Select vehicle</mat-label>
         <mat-select formControlName="vehicle" (selectionChange)="onVehicleSelection($event)">
           <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">
@@ -33,10 +33,10 @@
               <mat-radio-button value="650">Only tanker</mat-radio-button>
             </mat-radio-group>
       </div>
-      <mat-form-field fxFlex="48" matTooltip="Price auto filled after vehicle selection" matTooltipPosition="after">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100" matTooltip="Price auto filled after vehicle selection" matTooltipPosition="after">
         <input matInput placeholder="Price per/hour" formControlName="price" required />
       </mat-form-field>
-      <mat-form-field fxFlex="48">
+      <mat-form-field fxFlex="48" fxFlex.xs="100" fxFlex.sm="100">
           <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" placeholder="Choose a date" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -44,12 +44,12 @@
       <mat-form-field fxFlex="100">
         <textarea matInput placeholder="Description" formControlName="description"></textarea>
       </mat-form-field>
-      <div fxFlex="100">
+      <div fxFlex="100" class="book-checkbox">
         <mat-checkbox formControlName="decl">I aceept the terms & conditions</mat-checkbox>
       </div>
 
       <div fxFlex="100" fxLayoutAlign="center center">
-        <button mat-raised-button (click)="onBook()" class="book-vehicle-btn" [disabled]="!vehicleForm.valid">Book
+        <button mat-raised-button fxFlex.xs="100" fxFlex.sm="100" (click)="onBook()" class="book-vehicle-btn" [disabled]="!vehicleForm.valid">Book
           Vehicle</button>
       </div>
     </form>

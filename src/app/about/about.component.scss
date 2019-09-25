@@ -3,8 +3,15 @@
 
     .about-img {
         border-radius: 25%;
-        height: 30vh;
-        width: 30vw
+        height: 25vh;
+        width: 30vw;
+        @media (min-width: 1500px) {
+            width: 20vw;
+        }
+    }
+
+    .about-content {
+        padding: 20px;
     }
 
     .marquee {
@@ -13,5 +20,14 @@
         background-clip: text;
         color: transparent;
         font-weight: 700;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-content, .about {
+        padding: 0px !important;
+    }
+    .about-img {
+        width: 65vw !important;
     }
 }

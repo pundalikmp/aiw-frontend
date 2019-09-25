@@ -5,3 +5,17 @@
 ::ng-deep .mat-raised-button {
     line-height: 30px;
 }
+.dashboard {
+    @media screen and (min-width: 1600px) {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.dashboard-content {
+    @media screen and (min-width: 1600px) {
+        width: 1500px;
+    }
+}
+       
