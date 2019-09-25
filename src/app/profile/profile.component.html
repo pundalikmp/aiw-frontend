@@ -43,23 +43,23 @@
           fxLayoutGap="10px"
           fxLayoutAlign="space-between center"
         >
-          <mat-form-field fxFlex="45">
+          <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Username" formControlName="username" />
           </mat-form-field>
-          <mat-form-field fxFlex="45">
+          <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input
               matInput
               placeholder="Firstname"
               formControlName="firstname"
             />
           </mat-form-field>
-          <mat-form-field fxFlex="45">
+          <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Lastname" formControlName="lastname" />
           </mat-form-field>
-          <mat-form-field fxFlex="45">
+          <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Mobile" formControlName="mobile" />
           </mat-form-field>
-          <mat-form-field fxFlex="45">
+          <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Email" formControlName="email" />
           </mat-form-field>
           <mat-form-field fxFlex="100">
@@ -68,7 +68,7 @@
         </form>
       </div>
       <div fxLayoutAlign="center center">
-        <button mat-raised-button [disabled]="!profileForm.valid" (click)="updateProfile()">UPDATE</button>
+        <button mat-raised-button fxFlex.xs="100" [disabled]="!profileForm.valid" (click)="updateProfile()">UPDATE</button>
       </div>
     </mat-card>
   </div>

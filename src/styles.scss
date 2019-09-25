@@ -4,6 +4,24 @@
 
 html body {
     margin: 0 auto;
+
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: grey;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(red -40%, yellow);
+    }
 }
 
 .mat-tab-label-active {
@@ -26,6 +44,9 @@ html body {
         min-width: 30vw;
         min-height: 30vh;
         width: 40vw;
+        @media (max-width: 600px) {
+            width: 75vw;
+        }
     }
 }
 
@@ -36,8 +57,18 @@ html body {
         width: 50vw;
         padding: 0;
         border-radius: 10px;
+        @media (max-width: 600px) {
+            width: 75vw;
+        }
     }
+
     .mat-raised-button {
         line-height: 30px;
+    }
+}
+
+.mat-paginator-container {
+    @media (max-width: 600px) {
+        justify-content: center !important;
     }
 }
