@@ -9,6 +9,31 @@ import { ContainerComponent } from './container/container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoaderService } from './shared/service/loader.service';
+import { SocialLoginModule } from 'angularx-social-login';
+import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+ 
+ 
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('170768029122-0tvscj5r04mkd11rdmamiubu5masl2u6.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('442535666360124')
+  },
+  // {
+  //   id: LinkedInLoginProvider.PROVIDER_ID,
+  //   provider: new LinkedInLoginProvider("78iqy5cu2e1fgr")
+  // }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
+ 
+
 
 @NgModule({
   declarations: [
@@ -20,10 +45,14 @@ import { LoaderService } from './shared/service/loader.service';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
+    SocialLoginModule,
     MatNativeDateModule,
     AppRoutingModule,
   ],
-  providers: [LoaderService],
+  providers: [LoaderService, {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

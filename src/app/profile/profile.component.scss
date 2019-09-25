@@ -18,8 +18,15 @@
         background: linear-gradient(-90deg, red -40%, yellow);
         position: absolute;
         top: 74px;
-        border-radius: 50%;
+        border-radius: 20%;
         left: 40px;
+        ::ng-deep {
+            .material-icons {
+                font-size: 15px;
+                height: 15px;
+                width: 15px;
+            }
+        }
     }
     .avatar-icon__edit-default {
         top: 0;

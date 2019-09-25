@@ -6,8 +6,14 @@ import { ProfileAuth, Register } from "../shared/model/data.model";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { RegisterDialogComponent } from "../shared/component/register-dialog/register-dialog.component";
 import { LoaderService } from "../shared/service/loader.service";
-import { LoaderComponent } from '../shared/component/loader/loader.component';
-import { DialogComponent } from '../shared/component/dialog/dialog.component';
+import { LoaderComponent } from "../shared/component/loader/loader.component";
+import { DialogComponent } from "../shared/component/dialog/dialog.component";
+import {
+  GoogleLoginProvider,
+  AuthService,
+  FacebookLoginProvider,
+  SocialUser
+} from "angularx-social-login";
 
 @Component({
   selector: "app-login",
@@ -36,16 +42,41 @@ export class LoginComponent implements OnInit {
   });
   theme: string = "JCB";
   loginMessage: string;
+  user: SocialUser;
 
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly dataservice: DataService,
     private readonly dialog: MatDialog,
-    private readonly loaderService: LoaderService
+    private readonly loaderService: LoaderService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.authState.subscribe(user => {
+    });
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(auth => {
+      if (auth) {
+        sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
+        this.router.navigate(["/dashboard"]);
+        this.onSignUp(auth);
+      }
+    });
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(auth => {
+      if (auth) {
+        sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
+        this.router.navigate(["/dashboard"]);
+        this.onSignUp(auth);
+      }
+    });
+  }
 
   signIn(): void {
     const authInput: ProfileAuth = <ProfileAuth>{
@@ -54,7 +85,7 @@ export class LoginComponent implements OnInit {
     };
     this.loaderService.show();
     this.dataservice.checkAuth(authInput).subscribe(
-      result => {        
+      result => {
         this.loaderService.hide();
         if (result) {
           sessionStorage.setItem(
@@ -108,50 +139,70 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignUp(): void {
-    this.loginForm.reset();
-    this.loginMessage = undefined;
-    const dialogRef: MatDialogRef<RegisterDialogComponent> = this.dialog.open(
-      RegisterDialogComponent,
-      {
-        data: {},
-        panelClass: "register-dialog",
-        hasBackdrop: true
-      }
-    );
-
-    dialogRef.afterClosed().subscribe(data => {
-      if (data) {
-        this.loaderService.show();
-        const userInput: Register = <Register>{
-          username: data.username,
-          pass: data.password,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email
-        };
-        this.dataservice.registerUser(userInput).subscribe(
-          result => {
-            this.loaderService.hide();
-            this.dialog.open(DialogComponent, {
-              data: {
-                message: 'Registration successfull. Please login using registered credentials.',
-                status: true
-              }
-            });
-            
-          },
-          error => {
-            this.loaderService.hide();
-            this.dialog.open(DialogComponent, {
-              data: {
-                message: 'Something went wrong, username already exists, please try other',
-                status: false
-              }
-            });
-          }
-        );
-      }
-    });
+  onSignUp(user?: SocialUser): void {
+    if (user) {
+      const userInput: Register = <Register>{
+        username: user.name.replace(/\s/g, "").toLowerCase(),
+        pass: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+      };
+      this.loaderService.show();
+      this.dataservice.registerUser(userInput).subscribe(
+        result => {
+          this.loaderService.hide();
+        },
+        () => {
+          this.loaderService.hide();
+        }
+      );
+    } else {
+      this.loginForm.reset();
+      this.loginMessage = undefined;
+      const dialogRef: MatDialogRef<RegisterDialogComponent> = this.dialog.open(
+        RegisterDialogComponent,
+        {
+          data: {},
+          panelClass: "register-dialog",
+          hasBackdrop: true
+        }
+      );
+  
+      dialogRef.afterClosed().subscribe(data => {
+        if (data) {
+          this.loaderService.show();
+          const userInput: Register = <Register>{
+            username: data.username,
+            pass: data.password,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email
+          };
+          this.dataservice.registerUser(userInput).subscribe(
+            result => {
+              this.loaderService.hide();
+              this.dialog.open(DialogComponent, {
+                data: {
+                  message:
+                    "Registration successfull. Please login using registered credentials.",
+                  status: true
+                }
+              });
+            },
+            error => {
+              this.loaderService.hide();
+              this.dialog.open(DialogComponent, {
+                data: {
+                  message:
+                    "Something went wrong, username already exists, please try other",
+                  status: false
+                }
+              });
+            }
+          );
+        }
+      });
+    }
   }
 }

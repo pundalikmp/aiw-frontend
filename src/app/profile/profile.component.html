@@ -2,33 +2,19 @@
   <h3>Current user : {{ profileForm.value.name }}</h3>
   <div fxLayout="column" fxLayoutAlign="center center">
     <mat-card>
-      <div
-        *ngIf="profile"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-        fxLayoutGap="30px"
-      >
+      <div *ngIf="profile" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
         <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
           <div style="position: relative">
-            <img *ngIf="imageSrc; else elseBlock"
-              src="data:image/jpeg;base64,{{ imageSrc }}"
-              alt="avatar"
-              class="profile-avatar"
-            />
+            <img *ngIf="imageSrc; else elseBlock" src="data:image/jpeg;base64,{{ imageSrc }}" alt="avatar"
+              class="profile-avatar" />
             <ng-template #elseBlock>
-                <img 
-                src="./assets/resources/aiw3.jpg"
-                alt="avatar"
-                class="profile-avatar"
-              />
+              <img src="./assets/resources/aiw3.jpg" alt="avatar" class="profile-avatar" />
             </ng-template>
-            
-            <mat-icon
-              (click)="onAvatarChange()"
-              class="avatar-icon__edit" [ngClass]="{'avatar-icon__edit-default': !imageSrc}"
-              matTooltip="Change profile pic"
-              >edit</mat-icon
-            >
+<span class="avatar-icon__edit"
+[ngClass]="{'avatar-icon__edit-default': !imageSrc}" matTooltip="Change profile pic">
+    <mat-icon (click)="onAvatarChange()">edit</mat-icon><span>Edit</span>
+</span>
+           
           </div>
           <div fxLayout="row" *ngIf="isChange" fxLayoutAlign="center center">
             <input type="file" (change)="onFileChanged($event)" />
@@ -37,21 +23,12 @@
             </button>
           </div>
         </div>
-        <form
-          [formGroup]="profileForm"
-          fxLayout="row wrap"
-          fxLayoutGap="10px"
-          fxLayoutAlign="space-between center"
-        >
+        <form [formGroup]="profileForm" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="space-between center">
           <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Username" formControlName="username" />
           </mat-form-field>
           <mat-form-field fxFlex="45" fxFlex.xs="100">
-            <input
-              matInput
-              placeholder="Firstname"
-              formControlName="firstname"
-            />
+            <input matInput placeholder="Firstname" formControlName="firstname" />
           </mat-form-field>
           <mat-form-field fxFlex="45" fxFlex.xs="100">
             <input matInput placeholder="Lastname" formControlName="lastname" />
@@ -68,7 +45,8 @@
         </form>
       </div>
       <div fxLayoutAlign="center center">
-        <button mat-raised-button fxFlex.xs="100" [disabled]="!profileForm.valid" (click)="updateProfile()">UPDATE</button>
+        <button mat-raised-button fxFlex.xs="100" [disabled]="!profileForm.valid"
+          (click)="updateProfile()">UPDATE</button>
       </div>
     </mat-card>
   </div>
