@@ -27,4 +27,8 @@ export class ContainerComponent implements OnInit {
     this.router.navigate(['about']);
   }
 
+  onPayment(): void {
+    this.router.navigate(['payment']);
+  }
+
 }

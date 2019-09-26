@@ -27,6 +27,10 @@ const routes: Routes = [
       {
         path: 'about',
         loadChildren: './about/about.module#AboutModule'
+      },
+      {
+        path: 'payment',
+        loadChildren: './payment/payment.module#PaymentModule'
       }
     ]
   },
