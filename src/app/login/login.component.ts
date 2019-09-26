@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     "Tractor",
     "Hitachi",
     "Water tanker",
-    "Form",
-    "Dry form"
+    "Farm",
+    "Dry farm"
   ];
   currentTheme: string = `url('../../assets/resources/Form.jpg')`;
   loginForm: FormGroup = this.formBuilder.group({
@@ -125,7 +125,7 @@ export class LoginComponent implements OnInit {
       case "Water tanker":
         return "water-tanker-theme";
         break;
-      case "Dry form":
+      case "Dry farm":
         return "dry-form-theme";
         break;
     }

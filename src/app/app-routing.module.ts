@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'payment',
         loadChildren: './payment/payment.module#PaymentModule'
+      },
+      {
+        path: 'feedback',
+        loadChildren: './feedback/feedback.module#FeedbackModule'
       }
     ]
   },

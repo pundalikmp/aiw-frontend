@@ -58,6 +58,10 @@ html body {
     }
 }
 
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+
 .register-dialog {
     .mat-dialog-container {
         min-width: 30vw;
