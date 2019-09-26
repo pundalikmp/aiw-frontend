@@ -8,8 +8,8 @@ import { FeedbackRoutingModule } from './feedback-routing.module';
   declarations: [FeedbackComponent],
   imports: [
     CommonModule,
-    SharedModule,
-    FeedbackRoutingModule
+    FeedbackRoutingModule,
+    SharedModule
   ]
 })
 export class FeedbackModule { }
