@@ -1,5 +1,5 @@
-<div class="login" fxFlex fxLayoutAlign="center center" [ngStyle]="{ 'background-image': currentTheme }">
-    <div fxLayout="column" class="login-theme" [ngClass]="getThemeClass()">
+<div class="login" fxFlex fxLayoutAlign="center center">
+  <!-- <div fxLayout="column" class="login-theme" [ngClass]="getThemeClass()" [ngStyle]="{ 'background-image': currentTheme }">
         <h4>Change theme</h4>
         <div>
             <mat-radio-group fxLayoutGap="14px">
@@ -8,49 +8,59 @@
                 </mat-radio-button>
             </mat-radio-group>
         </div>
+    </div> -->
+
+  <div class="login-content" fxLayout="column" fxLayoutGap="13px">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="aiw-logo">
+        AIW
+      </span>
+      <button mat-button (click)="signInWithGoogle()" fxLayout="row">
+        <img src="./assets/resources/google.png" alt="" style="height: 26px" />
+      </button>
+      <button mat-button (click)="signInWithFB()" fxLayout="row">
+        <img src="./assets/resources/fb.jpg" alt="" style="height: 30px" />
+      </button>
+      <button mat-flat-button (click)="onSignUp()">
+        Signup
+      </button>
     </div>
 
-    <mat-card class="login-card" [ngClass]="getClass()" fxLayout="column" fxLayoutAlign="center center"
-        fxLayoutGap="20px">
-        <h4>
-            AIW Login
-        </h4>
-        <form [formGroup]="loginForm" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <mat-form-field fxFlex="100">
-                <input matInput placeholder="username" formControlName="username" required />
-                <mat-error *ngIf="loginForm.controls.username.errors">Username length must be 8 to 15</mat-error>
-            </mat-form-field>
-            <mat-form-field fxFlex="100">
-                <input matInput placeholder="password" formControlName="password" type="password" required />
-                <mat-error *ngIf="loginForm.controls.password.errors">Password length must be 8 to 15</mat-error>
-            </mat-form-field>
-            <div class="login-status__text">
-                <mat-error *ngIf="loginMessage">{{ loginMessage }}</mat-error>
-            </div>
-        </form>
-        <div fxLayout="row" fxFlex="100" style="width: 100%" fxLayoutAlign="center center" fxLayoutGap="10px">
-            <button fxFlex="40" fxFlex.md="50" fxFlex.xs="50" fxFlex.sm="50" mat-raised-button
-                [disabled]="!loginForm.valid" (click)="signIn()" class="login-btn">
-                SIGNIN
-            </button>
-            <button fxFlex="40" fxFlex.md="50" fxFlex.xs="50" fxFlex.sm="50" mat-raised-button (click)="onSignUp()"
-                class="login-btn">
-                SIGNUP
-            </button>
-            <!-- <button mat-raised-button (click)="onSkip()" class="skip-login">SKIP</button> -->
-        </div>
-        <span class="register-note">Not a member ? Please signup..!</span>
-        <div fxLayout="column" fxLayoutGap="10px" class="social-login-btn">
-            <button mat-raised-button (click)="signInWithGoogle()" fxLayout="row">
-                <img src="./assets/resources/google.png" alt="" style="height: 30px" />
-                Sign in with Google
-            </button>
-            <button mat-raised-button (click)="signInWithFB()" fxLayout="row">
-                <img src="./assets/resources/fb.jpg" alt="" style="height: 30px" />
-                Sign in with Facebook
-            </button>
-        </div>
-    </mat-card>
-
-
+    <form
+      [formGroup]="loginForm"
+      fxFlex="100"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+    >
+      <mat-form-field fxFlex="100" [ngClass]="{'margin-btm': loginForm.controls.username.errors}">
+        <input matInput placeholder="username" formControlName="username" />
+        <mat-error *ngIf="loginForm.controls.username.errors"
+          >Username length must be 8 to 15</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field fxFlex="100" [ngClass]="{'margin-btm': loginForm.controls.password.errors}">
+        <input
+          matInput
+          placeholder="password"
+          formControlName="password"
+          type="password"
+        />
+        <mat-error *ngIf="loginForm.controls.password.errors"
+          >Password length must be 8 to 15</mat-error
+        >
+      </mat-form-field>
+      <div class="login-status__text">
+        <mat-error *ngIf="loginMessage">{{ loginMessage }}</mat-error>
+      </div>
+      <button
+        fxFlex="100"
+        mat-raised-button
+        [disabled]="!loginForm.valid"
+        (click)="signIn()"
+        class="login-btn"
+      >
+        SIGNIN
+      </button>
+    </form>
+  </div>
 </div>

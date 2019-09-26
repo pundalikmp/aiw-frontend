@@ -25,6 +25,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { LoaderComponent } from './component/loader/loader.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
 
 const MATERIAL_MODULES: any = [
   MatCardModule,
@@ -43,7 +44,8 @@ const MATERIAL_MODULES: any = [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatDividerModule
 ];
 
 const LAYOUT_MODULES: any = [FlexLayoutModule];

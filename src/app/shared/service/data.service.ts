@@ -17,7 +17,7 @@ import { Observable } from "rxjs";
 })
 export class DataService {
   url: string = "../../../assets/data/profile.json";
-  baseUrl: string = "https://aiw-earth-movers.herokuapp.com";
+  baseUrl: string = "http://localhost:3000";
 
   constructor(private readonly http: HttpClient) {}
 

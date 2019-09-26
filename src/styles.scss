@@ -66,11 +66,19 @@ html body {
     .mat-dialog-container {
         min-width: 30vw;
         min-height: 30vh;
-        width: 50vw;
+        width: 40vw;
         padding: 0;
         border-radius: 10px;
-        @media (max-width: 600px) {
+        @media screen and (max-width: 500px) {
             width: 75vw;
+        }
+    
+        @media screen and (min-width: 501px) and (max-width: 768px) {
+            width: 60vw;
+        }
+    
+        @media screen and (min-width: 769px) {
+            width: 50vw;
         }
     }
 
