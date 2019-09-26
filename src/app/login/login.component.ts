@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     "Farm",
     "Dry farm"
   ];
-  currentTheme: string = `url('../../assets/resources/Farm.jpg')`;
+  currentTheme: string = `url('../../assets/resources/JCB.jpg')`;
   loginForm: FormGroup = this.formBuilder.group({
     username: [
       "",
