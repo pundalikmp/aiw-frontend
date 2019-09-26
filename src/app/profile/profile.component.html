@@ -10,13 +10,13 @@
             <ng-template #elseBlock>
               <img src="./assets/resources/aiw3.jpg" alt="avatar" class="profile-avatar" />
             </ng-template>
-<span class="avatar-icon__edit"
-[ngClass]="{'avatar-icon__edit-default': !imageSrc}" matTooltip="Change profile pic">
-    <mat-icon (click)="onAvatarChange()">edit</mat-icon><span>Edit</span>
-</span>
-           
+            <span class="avatar-icon__edit" [ngClass]="{'avatar-icon__edit-default': !imageSrc}"
+              matTooltip="Change profile pic">
+              <mat-icon (click)="onAvatarChange()">edit</mat-icon><span>Edit</span>
+            </span>
+
           </div>
-          <div fxLayout="row" *ngIf="isChange" fxLayoutAlign="center center">
+          <div fxLayout="row" class="file-upload" *ngIf="isChange" fxLayoutAlign="center center">
             <input type="file" (change)="onFileChanged($event)" />
             <button [disabled]="!file" mat-raised-button (click)="onUpload()">
               UPLOAD

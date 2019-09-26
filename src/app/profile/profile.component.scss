@@ -31,4 +31,16 @@
     .avatar-icon__edit-default {
         top: 0;
     }
+
+    .file-upload {
+        @media screen and (max-width: 600px) {
+            flex-direction: column !important;
+            input {
+                margin-left: 16px;
+            }
+            .mat-raised-button {
+                margin-top: 20px;
+            }
+        }
+    }
 }
