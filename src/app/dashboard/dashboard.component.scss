@@ -6,6 +6,7 @@
     line-height: 30px;
 }
 .dashboard {
+    overflow: hidden;
     @media screen and (min-width: 1600px) {
         display: flex;
         justify-content: space-between;

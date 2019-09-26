@@ -1,0 +1,41 @@
+<div class="payment">
+  <marquee behavior="scroll" direction="left">
+    <h4 class="marquee">Online payment feature will come soon...</h4>
+  </marquee>
+  <mat-card>
+    <h4>
+      Please select vehicle and time spent to calculate total amount
+    </h4>
+    <form [formGroup]="paymentForm" fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
+        <mat-label>Select vehicle</mat-label>
+        <mat-select formControlName="vehicle">
+          <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle.name">
+            {{vehicle.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
+        <input type="number" matInput placeholder="Time in hours" formControlName="time">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
+        <input matInput placeholder="Total amount to be paid" formControlName="totalAmount">
+      </mat-form-field>
+      <div fxLayout="row wrap" fxLayoutGap="20px">
+        <button mat-raised-button matTooltip="Calculate total amount" [disabled]="!paymentForm.valid"
+          (click)="calAmount()">
+          Calculate
+        </button>
+        <button mat-raised-button [disabled]="!paymentForm.valid" (click)="onRefresh()">
+            Reset
+          </button>
+        <button mat-raised-button class="make-payment-btn" [disabled]="true" (click)="onPayment()"
+          matTooltip="This feature will come soon">
+          Make Payment
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

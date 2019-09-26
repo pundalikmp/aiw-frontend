@@ -8,7 +8,7 @@ import { LoaderService } from '../shared/service/loader.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  isOpen: boolean = false;
+  isOpen: boolean = true;
   avatarUrl: string;
 
   constructor(private readonly router: Router,

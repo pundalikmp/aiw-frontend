@@ -2,13 +2,24 @@
     ::ng-deep .mat-card {
         border-top: 6px solid #f99a0d;
     }
+
     ::ng-deep .mat-raised-button:hover {
         background: linear-gradient(-90deg, red -40%, yellow);
     }
-    ::ng-deep input.mat-input-element, .mat-form-field-label {
+
+    ::ng-deep input.mat-input-element,
+    .mat-form-field-label {
         font-size: 14px;
     }
+
     ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
         font-size: 14px;
+    }
+
+    .register-card__text {
+        margin-bottom: 20px;
+        background: rgba(0, 0, 0, 0.04);
+        text-align: center;
+        margin: -16px -16px 16px -16px;
     }
 }

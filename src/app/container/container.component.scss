@@ -1,3 +1,7 @@
 .sidenav-list-item {
     margin-top: 30px;
+    .mat-icon-button:focus {
+        border-left: 2px solid red;
+        border-radius: 0
+    }
 }

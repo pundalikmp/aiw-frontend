@@ -39,6 +39,14 @@ html body {
     background-color: #ff7300;
 }
 
+.marquee {
+    font-size: 18px;
+    background: linear-gradient(333deg, red, green);
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
 .book-vehicle-dialog {
     .mat-dialog-container {
         min-width: 30vw;
