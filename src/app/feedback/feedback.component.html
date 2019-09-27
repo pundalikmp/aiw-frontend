@@ -1,8 +1,8 @@
 <div class="feedback">
-    <h5>Please give suggestions</h5>
+    <h5>Please provide suggestions</h5>
   <mat-card>
     <form [formGroup]="feedbackForm" fxLayout="row wrap" fxLayoutAlign="center center">
-      <mat-form-field fxFlex="75">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
         <mat-label>Select vehicle</mat-label>
         <mat-select formControlName="vehicle">
           <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">
@@ -10,7 +10,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFlex="75">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
         <mat-label>Select feedback</mat-label>
         <mat-select formControlName="vehicleFeedback">
           <mat-option *ngFor="let feed of feedback" [value]="feed">
@@ -18,7 +18,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFlex="75">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
         <mat-label>Driver feedback</mat-label>
         <mat-select formControlName="driverFeedback">
           <mat-option *ngFor="let feed of feedback" [value]="feed">
@@ -26,7 +26,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFlex="75">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
         <mat-label>Application feedback</mat-label>
         <mat-select formControlName="appFeedback">
           <mat-option *ngFor="let feed of feedback" [value]="feed">
@@ -34,12 +34,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFlex="75">
+      <mat-form-field fxFlex="75" fxFlex.xs="100" fxFlex.sm="100">
         <textarea matInput placeholder="Please suggest App improvements" formControlName="description"></textarea>
       </mat-form-field>
     </form>
     <div fxLayoutAlign="center center">
-      <button mat-raised-button fxFlex="30" [disabled]="!feedbackForm.valid" (click)="onSubmit()">Submit Feedback</button>
+      <button mat-raised-button fxFlex="30" fxFlex.xs="100" fxFlex.sm="100" [disabled]="!feedbackForm.valid" (click)="onSubmit()">Submit Feedback</button>
     </div>
   </mat-card>
 </div>

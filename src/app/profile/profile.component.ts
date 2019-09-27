@@ -42,15 +42,15 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!sessionStorage.getItem('username')) {
-        const dialogData: DialogData = <DialogData>{
-          message: "Something went wrong, please try to login again.",
-          status: false
-        };
-        this.dialog.open(DialogComponent, {
-          data: dialogData,
-          panelClass: "book-vehicle-dialog"
-        });
+    if (!sessionStorage.getItem("username")) {
+      const dialogData: DialogData = <DialogData>{
+        message: "Something went wrong, please try to login again.",
+        status: false
+      };
+      this.dialog.open(DialogComponent, {
+        data: dialogData,
+        panelClass: "book-vehicle-dialog"
+      });
     } else {
       this.loaderService.show();
       this.dataService.fetchProfile().subscribe(
@@ -97,8 +97,10 @@ export class ProfileComponent implements OnInit {
       result => {
         this.loaderService.hide();
         this.isChange = !this.isChange;
-        this.imageSrc = result.avatar;
-        this.loaderService.setAvatar(this.imageSrc);
+        if (result.avatar) {
+          this.imageSrc = result.avatar;
+          this.loaderService.setAvatar(this.imageSrc);
+        }
         if (result) {
           const dialogData: DialogData = <DialogData>{
             message: "Profile pic uploaded successfully.",
@@ -138,7 +140,9 @@ export class ProfileComponent implements OnInit {
     this.loaderService.avatarState.subscribe(
       data => {
         this.loaderService.hide();
-        this.imageSrc = data;
+        if (data) {
+          this.imageSrc = data;
+        }
       },
       () => {
         this.loaderService.hide();
@@ -157,14 +161,30 @@ export class ProfileComponent implements OnInit {
     };
 
     this.loaderService.show();
-    this.dataService.registerUser(input).subscribe(result => {
-      this.loaderService.hide();
-      this.profileForm.setValue({
-        mobile: input.mobile,
-        address: input.address
-      });
-    }, () => {
-      this.loaderService.hide();
-    });
+    this.dataService.registerUser(input).subscribe(
+      result => {
+        this.loaderService.hide();
+        this.dialog.open(DialogComponent, {
+          data: {
+            message: "Profile updated successfully",
+            status: true
+          }
+        });
+        this.profileForm.patchValue({
+          username: input.username,
+          mobile: input.mobile,
+          address: input.address
+        });
+      },
+      () => {
+        this.loaderService.hide();
+        this.dialog.open(DialogComponent, {
+          data: {
+            message: "Something went wrong.",
+            status: false
+          }
+        });
+      }
+    );
   }
 }

@@ -9,49 +9,49 @@
   <mat-card>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8" #sort="matSort" matSort>
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Name
         </mat-header-cell>
-        <mat-cell *matCellDef="let element">
+        <mat-cell *matCellDef="let element" fxFlex.xs="100px">
           {{ element?.name }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="mobile">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Mobile
         </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element?.mobile }} </mat-cell>
+        <mat-cell fxFlex.xs="100px" *matCellDef="let element"> {{ element?.mobile }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Address
         </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element?.address }} </mat-cell>
+        <mat-cell fxFlex.xs="100px" *matCellDef="let element"> {{ element?.address }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="vehicle">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Vehicle with Price(INR)</mat-header-cell>
-        <mat-cell *matCellDef="let element">
+        <mat-cell fxFlex.xs="100px" *matCellDef="let element">
           {{ element?.vehicle }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="date">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Date
         </mat-header-cell>
-        <mat-cell *matCellDef="let element">
+        <mat-cell fxFlex.xs="100px" *matCellDef="let element">
           {{ element?.date | date }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.xs="100px">
           Description</mat-header-cell>
-        <mat-cell *matCellDef="let element">
+        <mat-cell fxFlex.xs="100px" *matCellDef="let element">
           {{ element?.description }}
         </mat-cell>
       </ng-container>
@@ -59,11 +59,11 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-    <div>
-      <mat-paginator #paginator></mat-paginator>
-    </div>
     <div class="no-data-found" *ngIf="!isDataAvailable" fxLayoutAlign="center center">
       <h3>No Data Found</h3>
+    </div>
+    <div>
+      <mat-paginator #paginator></mat-paginator>
     </div>
   </mat-card>
 </div>

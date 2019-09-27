@@ -8,7 +8,7 @@ import { LoaderService } from '../shared/service/loader.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  isOpen: boolean = false;
+  isOpen: boolean = true;
   avatarUrl: string;
 
   constructor(private readonly router: Router,
@@ -17,8 +17,10 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.loaderService.show();
     this.loaderService.avatarState.subscribe(avatar => {
-      this.avatarUrl = avatar;
       this.loaderService.hide();
+      if (avatar) {
+        this.avatarUrl = avatar;
+      }
     }, () => {
       this.loaderService.hide();
     })

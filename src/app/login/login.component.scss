@@ -5,38 +5,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-    .login-card {
-        width: 32vw;
-        background: white;
-        // color: black;
-        position: absolute;
-        top: 6%;
-        right: 1%;
-        border-radius: 10px;
-
-        @media screen and (max-width: 320px) {
-            width: 90vw;
-            position: relative;
-            top: unset;
-            right: unset;
-        }
-
-        @media screen and (min-width: 321px) and (max-width: 500px) {
-            width: 75vw;
-            position: relative;
-            top: unset;
-            right: unset;
-        }
-
-        @media screen and (min-width: 501px) and (max-width: 768px) {
-            width: 50vw;
-            position: relative;
-            top: unset;
-            right: unset;
-        }
-    }
-
+    background: rgba(0, 0, 0, 0.06);
     .login-card:hover {
         box-shadow: 0 0px 1px 16px rgba(0, 0, 0, 0.06);
     }
@@ -47,8 +16,9 @@
 
     }
 
-    .login-btn:hover {
-        background: linear-gradient(-90deg, red -40%, yellow);
+    .login-btn {
+        background: linear-gradient(-90deg, #e810f1, #ece319);
+        color: white;
     }
 
     .login-skip-link {
@@ -101,4 +71,97 @@
 .login-status__text {
     margin-top: -10px;
     font-size: 12px;
+}
+
+.social-login-btn {
+    .mat-raised-button {
+        padding: 0 6px;
+    }
+}
+
+.login-content {
+
+    ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+        background-color: transparent
+    }
+
+    .margin-btm {
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 65vw;
+    }
+
+    @media screen and (min-width: 501px) and (max-width: 768px) {
+        width: 40vw;
+    }
+
+    @media screen and (min-width: 769px) {
+        width: 20vw;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    .aiw-logo {
+        font-family: serif;
+        background: linear-gradient(180deg, #e810f1, #ece319);
+        background-clip: text;
+        color: transparent;
+        font-weight: bold;
+        -webkit-background-clip: text;
+    }
+
+    ::ng-deep .mat-flat-button {
+        background: rgba(0, 0, 0, 0.1);
+        height: 24px;
+        display: flex;
+        width: 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ::ng-deep .mat-button {
+        padding: 0;
+        min-width: 0;
+    }
+
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: transparent
+    }
+
+    ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+        border: 1px solid rgba(0, 0, 0, 0.36);;
+        border-radius: 10px;
+    }
+
+    ::ng-deep .mat-form-field-label {
+        left: 10px;
+    }
+
+    ::ng-deep .mat-focused,
+    ::ng-deep .mat-form-field-should-float {
+        .mat-form-field-label-wrapper {
+            top: -8px;
+        }
+
+        .mat-form-field-label {
+            background: #f0f0f0  !important;
+            width: max-content !important;
+            font-size: 18px;
+            color: #e89ff1;
+        }
+      .mat-form-field-ripple {
+            background-color: transparent;
+        }
+    }
+
+    input:-internal-autofill-selected,
+    input.mat-input-element {
+        background-color: transparent !important;
+        margin-left: 10px;
+        width: max-content;
+    }
 }

@@ -15,13 +15,32 @@
     }
 
     .avatar-icon__edit {
-        background: linear-gradient(-90deg, red -40%, yellow);
+        background: linear-gradient(-90deg, #e810f1, #ece319);
         position: absolute;
         top: 74px;
-        border-radius: 50%;
+        border-radius: 20%;
         left: 40px;
+        ::ng-deep {
+            .material-icons {
+                font-size: 15px;
+                height: 15px;
+                width: 15px;
+            }
+        }
     }
     .avatar-icon__edit-default {
         top: 0;
+    }
+
+    .file-upload {
+        @media screen and (max-width: 600px) {
+            flex-direction: column !important;
+            input {
+                margin-left: 16px;
+            }
+            .mat-raised-button {
+                margin-top: 20px;
+            }
+        }
     }
 }

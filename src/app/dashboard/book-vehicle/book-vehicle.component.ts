@@ -7,7 +7,9 @@ import {
   DialogData,
   Order,
   User,
-  Address
+  Address,
+  RegisterPayload,
+  Register
 } from "src/app/shared/model/data.model";
 import { DataService } from "src/app/shared/service/data.service";
 import { LoaderService } from "src/app/shared/service/loader.service";
@@ -34,6 +36,7 @@ export class BookVehicleComponent implements OnInit {
   });
 
   minDate: Date = new Date();
+  profile: Register;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -44,6 +47,25 @@ export class BookVehicleComponent implements OnInit {
 
   ngOnInit() {
     this.vehicleForm.controls["price"].disable();
+    this.loaderService.show();
+      this.dataService.fetchProfile().subscribe(
+        (response: RegisterPayload) => {
+          this.loaderService.hide();
+          if (response) {
+            this.profile = response.profile[0];
+            this.vehicleForm.patchValue({
+              firstName: this.profile.firstName ? this.profile.firstName : '',
+              lastName: this.profile.lastName ? this.profile.lastName : '',
+              mobile: this.profile.mobile ? this.profile.mobile : null,
+              email: this.profile.email ? this.profile.email : '',
+              address: this.profile.address ? this.profile.address : ''
+            })
+          }
+        },
+        () => {
+          this.loaderService.hide();
+        }
+      );
   }
 
   onVehicleSelection(selection: MatSelectChange): void {

@@ -1,20 +1,20 @@
-<div>
-  <h3>Please select below options</h3>
-  <mat-tab-group animationDuration="600ms">
-    <mat-tab label="Book Vehicle">
-      <ng-template matTabContent>
-        <app-book-vehicle></app-book-vehicle>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Total Orders">
-      <ng-template matTabContent>
-          <app-vehicle-detail></app-vehicle-detail>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Feedback">
-      <ng-template matTabContent>
-          <app-feedback></app-feedback>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
+<div class="dashboard">
+  <div style="width: 1500px">
+      <h3>Please select below options</h3>
+  </div>
+  
+  <div class="dashboard-content">
+    <mat-tab-group animationDuration="600ms">
+      <mat-tab label="Book Vehicle">
+        <ng-template matTabContent>
+          <app-book-vehicle></app-book-vehicle>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Total Orders">
+        <ng-template matTabContent>
+            <app-vehicle-detail></app-vehicle-detail>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
