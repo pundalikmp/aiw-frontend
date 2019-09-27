@@ -51,19 +51,24 @@ export class LoginComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly loaderService: LoaderService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
+      this.user = user;
     });
   }
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(auth => {
       if (auth) {
-        sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
+        this.user = auth;
+        sessionStorage.setItem(
+          "username",
+          auth.name.replace(/\s/g, "").toLowerCase()
+        );
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(auth, false);
+        this.onSignUp(false);
       }
     });
   }
@@ -71,9 +76,13 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(auth => {
       if (auth) {
-        sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
+        this.user = auth;
+        sessionStorage.setItem(
+          "username",
+          auth.name.replace(/\s/g, "").toLowerCase()
+        );
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(auth, false);
+        this.onSignUp(false);
       }
     });
   }
@@ -139,17 +148,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignUp(user?: SocialUser, isNew?: boolean): void {
-    console.log(user);
+  onSignUp(isNew?: boolean): void {
     console.log(isNew);
-    
+
     if (!isNew) {
-      const userInput: Register = <Register> {
-        username: user.name.replace(/\s/g, "").toLowerCase(),
-        pass: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
+      const userInput: Register = <Register>{
+        username: this.user.name.replace(/\s/g, "").toLowerCase(),
+        pass: this.user.id,
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        email: this.user.email
       };
       this.loaderService.show();
       this.dataservice.registerUser(userInput).subscribe(
@@ -171,7 +179,7 @@ export class LoginComponent implements OnInit {
           hasBackdrop: true
         }
       );
-  
+
       dialogRef.afterClosed().subscribe(data => {
         if (data) {
           this.loaderService.show();
