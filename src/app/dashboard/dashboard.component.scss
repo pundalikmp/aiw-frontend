@@ -1,5 +1,5 @@
 ::ng-deep .mat-raised-button:hover {
-    background: linear-gradient(-90deg, red -40%, yellow);
+    background: linear-gradient(-90deg, #e810f1, #ece319);
 }
 
 ::ng-deep .mat-raised-button {
@@ -19,4 +19,7 @@
         width: 1500px;
     }
 }
-       
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: transparent !important;
+    background: transparent !important;
+}

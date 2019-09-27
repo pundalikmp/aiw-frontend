@@ -25,14 +25,14 @@ html body {
 }
 
 .mat-tab-label-active {
-    background: linear-gradient(-90deg, red -40%, yellow);
+    background: linear-gradient(-90deg, #e810f1, #ece319);
     font-weight: 700;
     font-size: 16px;
     color: white;
 }
 
 .mat-ink-bar {
-    background: linear-gradient(-90deg, red -40%, yellow);
+    background: linear-gradient(-90deg, #e810f1, #ece319);
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
@@ -68,6 +68,7 @@ html body {
         min-height: 30vh;
         width: 40vw;
         padding: 0;
+        height: unset;
         border-radius: 10px;
         @media screen and (max-width: 500px) {
             width: 75vw;

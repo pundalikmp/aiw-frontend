@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       if (auth) {
         sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(auth);
+        this.onSignUp(auth, false);
       }
     });
   }
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       if (auth) {
         sessionStorage.setItem("username", auth.name.replace(/\s/g, "").toLowerCase());
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(auth);
+        this.onSignUp(auth, false);
       }
     });
   }
@@ -139,9 +139,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignUp(user?: SocialUser): void {
-    if (user) {
-      const userInput: Register = <Register>{
+  onSignUp(user?: SocialUser, isNew?: boolean): void {
+    console.log(user);
+    console.log(isNew);
+    
+    if (!isNew) {
+      const userInput: Register = <Register> {
         username: user.name.replace(/\s/g, "").toLowerCase(),
         pass: user.id,
         firstName: user.firstName,
