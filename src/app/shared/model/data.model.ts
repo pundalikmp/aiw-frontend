@@ -33,6 +33,10 @@ export enum Status {
     NOK = 'NOK'
 }
 
+export interface RegisterStatus {
+    message: string;
+}
+
 export interface AvatarPayload {
     data: UploadAvatar[];
 }
