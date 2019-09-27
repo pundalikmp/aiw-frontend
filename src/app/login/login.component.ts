@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { DataService } from "../shared/service/data.service";
-import { ProfileAuth, Register } from "../shared/model/data.model";
+import { ProfileAuth, Register, RegisterStatus } from "../shared/model/data.model";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { RegisterDialogComponent } from "../shared/component/register-dialog/register-dialog.component";
 import { LoaderService } from "../shared/service/loader.service";
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
           auth.name.replace(/\s/g, "").toLowerCase()
         );
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(false);
+        this.onSocialSignup();
       }
     });
   }
@@ -82,9 +82,30 @@ export class LoginComponent implements OnInit {
           auth.name.replace(/\s/g, "").toLowerCase()
         );
         this.router.navigate(["/dashboard"]);
-        this.onSignUp(false);
+        this.onSocialSignup();
       }
     });
+  }
+
+  onSocialSignup(): void {
+    if (this.user) {
+      const userInput: Register = <Register>{
+        username: this.user.name.replace(/\s/g, "").toLowerCase(),
+        pass: this.user.id,
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        email: this.user.email
+      };
+      this.loaderService.show();
+      this.dataservice.registerUser(userInput).subscribe(
+        (result: RegisterStatus) => {
+              this.loaderService.hide();
+        },
+        () => {
+          this.loaderService.hide();
+        }
+      );
+    }
   }
 
   signIn(): void {
@@ -148,25 +169,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignUp(isNew: boolean): void {
-    if (!isNew) {
-      const userInput: Register = <Register>{
-        username: this.user.name.replace(/\s/g, "").toLowerCase(),
-        pass: this.user.id,
-        firstName: this.user.firstName,
-        lastName: this.user.lastName,
-        email: this.user.email
-      };
-      this.loaderService.show();
-      this.dataservice.registerUser(userInput).subscribe(
-        result => {
-          this.loaderService.hide();
-        },
-        () => {
-          this.loaderService.hide();
-        }
-      );
-    } else {
+  onSignUp(): void {
       this.loginForm.reset();
       this.loginMessage = undefined;
       const dialogRef: MatDialogRef<RegisterDialogComponent> = this.dialog.open(
@@ -189,14 +192,21 @@ export class LoginComponent implements OnInit {
             email: data.email
           };
           this.dataservice.registerUser(userInput).subscribe(
-            result => {
+            (result: RegisterStatus) => {
               this.loaderService.hide();
-              if (result) {
+              if (result.message === 'OK') {
                 this.dialog.open(DialogComponent, {
                   data: {
                     message:
                       "Registration successfull. Please login using registered credentials.",
                     status: true
+                  }
+                });
+              } else if (result.message === 'username already present') {
+                this.dialog.open(DialogComponent, {
+                  data: {
+                    message: "Username already exists, please try other",
+                    status: false
                   }
                 });
               }
@@ -205,7 +215,7 @@ export class LoginComponent implements OnInit {
               this.loaderService.hide();
               this.dialog.open(DialogComponent, {
                 data: {
-                  message: "Username already exists, please try other",
+                  message: "Something went wrong..!!",
                   status: false
                 }
               });
@@ -214,5 +224,4 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
 }

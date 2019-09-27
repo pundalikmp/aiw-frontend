@@ -9,6 +9,7 @@ import {
   RegisterPayload,
   AvatarPayload,
   UploadPayload,
+  RegisterStatus,
 } from "../model/data.model";
 import { Observable } from "rxjs";
 
@@ -42,9 +43,9 @@ export class DataService {
       .pipe(response => response);
   }
 
-  registerUser(input: Register): Observable<Status> {
+  registerUser(input: Register): Observable<RegisterStatus> {
     return this.http
-      .post<Status>(`${this.baseUrl}/register`, input)
+      .post<RegisterStatus>(`${this.baseUrl}/register`, input)
       .pipe(response => response);
   }
 
