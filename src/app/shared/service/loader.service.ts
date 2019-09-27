@@ -10,11 +10,18 @@ export class LoaderService {
   private readonly avatarSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   avatarState: Observable<string> = this.avatarSubject.asObservable();
 
+  private readonly username: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  userState: Observable<string> = this.username.asObservable();
+
   constructor() { 
   }
 
   setAvatar(avatarState: string): void {
     this.avatarSubject.next(avatarState);
+  }
+
+  setUser(userState: string): void {
+    this.username.next(userState);
   }
 
   show(): void {

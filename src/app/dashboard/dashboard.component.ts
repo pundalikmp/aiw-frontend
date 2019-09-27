@@ -15,17 +15,18 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.show();
-    this.dataService.downloadAvatar().subscribe(
-      data => {
-        this.loaderService.hide();
-        if (data!.data[0] && data!.data[0]!.avatar) {
-          this.loaderService.setAvatar(data.data[0].avatar);
+    setTimeout(() => {
+      this.dataService.downloadAvatar().subscribe(
+        data => {
+          this.loaderService.hide();
+          if (data!.data[0] && data!.data[0]!.avatar) {
+            this.loaderService.setAvatar(data.data[0].avatar);
+          }
+        },
+        () => {
+          this.loaderService.hide();
         }
-      },
-      () => {
-        this.loaderService.hide();
-      }
-    );
+      );
+    }, 100);
   }
-
 }

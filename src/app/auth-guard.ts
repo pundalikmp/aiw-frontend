@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoaderService } from './shared/service/loader.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,13 +9,15 @@ import { Observable } from 'rxjs';
 
 export class AuthGuard implements CanActivate {
 
-    constructor(private readonly router: Router){
+    constructor(private readonly router: Router, private loaderService: LoaderService){
     }
 
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        console.log('sessionStorage.getItem', sessionStorage.getItem('username'));
-        
-        if (!sessionStorage.getItem('username')) {
+        let user: string;
+        this.loaderService.userState.subscribe(data => {
+            user = data;
+        });
+        if (!user) {
             this.router.navigate(['login']);
             return false;
         } else {

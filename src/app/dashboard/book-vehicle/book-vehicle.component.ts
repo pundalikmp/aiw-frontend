@@ -93,9 +93,12 @@ export class BookVehicleComponent implements OnInit {
   }
 
   onBook(): void {
-    const username = sessionStorage.getItem("username");
+    let userData: string;
+        this.loaderService.userState.subscribe(data => {
+          userData = data;
+        });
     const orderInput: Order = <Order>{
-      username: username,
+      username: userData,
       user: <User>{
         firstName: this.vehicleForm.controls["firstName"].value,
         lastName: this.vehicleForm.controls["lastName"].value,
