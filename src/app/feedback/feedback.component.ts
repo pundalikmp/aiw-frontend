@@ -34,8 +34,12 @@ export class FeedbackComponent implements OnInit {
 
   onSubmit(): void {
     const form = this.feedbackForm.value;
+    let userData: string;
+        this.loaderService.userState.subscribe(data => {
+          userData = data;
+        });
     const feedbackInput: FeedbackInput = <FeedbackInput> {
-      username: sessionStorage.getItem('username'),
+      username: userData,
       vehicle: form.vehicle,
       vehicleFeedback: form.vehicleFeedback,
       driverFeedback: form.driverFeedback,

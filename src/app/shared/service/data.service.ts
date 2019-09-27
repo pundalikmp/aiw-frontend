@@ -12,6 +12,7 @@ import {
   RegisterStatus,
 } from "../model/data.model";
 import { Observable } from "rxjs";
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: "root"
@@ -19,14 +20,19 @@ import { Observable } from "rxjs";
 export class DataService {
   url: string = "../../../assets/data/profile.json";
   baseUrl: string = "http://localhost:3000";
+  userData: string;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient, private loaderService: LoaderService) {
+    this.loaderService.userState.subscribe(data => {
+      this.userData = data;
+    });
+  }
 
   fetchProfile(): Observable<RegisterPayload> {
     return this.http.get<RegisterPayload>(`${this.baseUrl}/register`,
       {
         params: {
-          username: sessionStorage.getItem('username') ? sessionStorage.getItem('username') : ''
+          username: this.userData ? this.userData : ''
         }
       }).pipe(response => response);
   }
@@ -60,7 +66,7 @@ export class DataService {
       .get<Order[]>(`${this.baseUrl}/order`,
       {
         params: {
-          username: sessionStorage.getItem('username') ? sessionStorage.getItem('username') : ''
+          username: this.userData ? this.userData : ''
         }
       })
       .pipe(response => response);
@@ -82,7 +88,7 @@ export class DataService {
     return this.http.get<AvatarPayload>(`${this.baseUrl}/upload`,
     {
       params: {
-        username: sessionStorage.getItem('username') ? sessionStorage.getItem('username') : ''
+        username: this.userData ? this.userData : ''
       }
     }
       ).pipe(res => res);

@@ -42,7 +42,11 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!sessionStorage.getItem("username")) {
+    let userData: string;
+    this.loaderService.userState.subscribe(data => {
+      userData = data;
+    });
+    if (!userData) {
       const dialogData: DialogData = <DialogData>{
         message: "Something went wrong, please try to login again.",
         status: false
@@ -90,8 +94,12 @@ export class ProfileComponent implements OnInit {
 
   onUpload(): void {
     const uploadData = new FormData();
+    let userData: string;
+    this.loaderService.userState.subscribe(data => {
+      userData = data;
+    });
     uploadData.append("avatar", this.file, this.file.name);
-    uploadData.append("username", sessionStorage.getItem("username"));
+    uploadData.append("username", userData);
     this.loaderService.show();
     this.dataService.uploadAvatar(uploadData).subscribe(
       result => {

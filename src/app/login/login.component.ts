@@ -63,10 +63,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(auth => {
       if (auth) {
         this.user = auth;
-        sessionStorage.setItem(
-          "username",
-          auth.name.replace(/\s/g, "").toLowerCase()
-        );
+        this.loaderService.setUser(auth.name.replace(/\s/g, "").toLowerCase());
         this.router.navigate(["/dashboard"]);
         this.onSocialSignup();
       }
@@ -77,10 +74,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(auth => {
       if (auth) {
         this.user = auth;
-        sessionStorage.setItem(
-          "username",
-          auth.name.replace(/\s/g, "").toLowerCase()
-        );
+        this.loaderService.setUser(auth.name.replace(/\s/g, "").toLowerCase());
         this.router.navigate(["/dashboard"]);
         this.onSocialSignup();
       }
@@ -118,10 +112,7 @@ export class LoginComponent implements OnInit {
       result => {
         this.loaderService.hide();
         if (result) {
-          sessionStorage.setItem(
-            "username",
-            this.loginForm.controls["username"].value
-          );
+          this.loaderService.setUser(this.loginForm.controls["username"].value);
           this.router.navigate(["/dashboard"]);
         }
       },
