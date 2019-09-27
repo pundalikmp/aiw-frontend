@@ -148,9 +148,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignUp(isNew?: boolean): void {
-    console.log(isNew);
-
+  onSignUp(isNew: boolean): void {
     if (!isNew) {
       const userInput: Register = <Register>{
         username: this.user.name.replace(/\s/g, "").toLowerCase(),
@@ -193,20 +191,21 @@ export class LoginComponent implements OnInit {
           this.dataservice.registerUser(userInput).subscribe(
             result => {
               this.loaderService.hide();
-              this.dialog.open(DialogComponent, {
-                data: {
-                  message:
-                    "Registration successfull. Please login using registered credentials.",
-                  status: true
-                }
-              });
+              if (result) {
+                this.dialog.open(DialogComponent, {
+                  data: {
+                    message:
+                      "Registration successfull. Please login using registered credentials.",
+                    status: true
+                  }
+                });
+              }
             },
             error => {
               this.loaderService.hide();
               this.dialog.open(DialogComponent, {
                 data: {
-                  message:
-                    "Something went wrong, username already exists, please try other",
+                  message: "Username already exists, please try other",
                   status: false
                 }
               });
