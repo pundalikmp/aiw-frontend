@@ -95,6 +95,18 @@ html body {
     }
 }
 .statcounter {
-   position: absolute;
-   bottom: 0px;
+    position: absolute;
+    top: 1px;
+    right: 0px;
+}
+
+.visits {
+    @extend .statcounter;
+    right: 70px;
+    top: 0;
+    background: linear-gradient(#e810f1, #ece319);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
 }
