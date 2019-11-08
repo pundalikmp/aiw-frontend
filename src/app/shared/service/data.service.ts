@@ -19,7 +19,7 @@ import { LoaderService } from './loader.service';
 })
 export class DataService {
   url: string = "../../../assets/data/profile.json";
-  baseUrl: string = "http://localhost:3000";
+  baseUrl: string = "https://aiw-backend-pupu.herokuapp.com";
   userData: string;
 
   constructor(private readonly http: HttpClient, private loaderService: LoaderService) {
