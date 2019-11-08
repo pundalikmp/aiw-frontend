@@ -11,6 +11,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoaderService } from './shared/service/loader.service';
 import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider  } from 'angularx-social-login';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
  
  
 
@@ -48,6 +50,7 @@ export function provideConfig() {
     SocialLoginModule,
     MatNativeDateModule,
     AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [LoaderService, {
     provide: AuthServiceConfig,
