@@ -4,7 +4,7 @@
     }
 
     ::ng-deep .mat-raised-button:hover {
-        background: linear-gradient(-90deg, #e810f1, #ece319);
+        background: linear-gradient(-90deg, #e63636, #ece319);
     }
 
     ::ng-deep input.mat-input-element,
@@ -22,7 +22,7 @@
         text-align: center;
         margin: -16px -16px 16px -16px;
         h3 {
-            background: linear-gradient(180deg, #e810f1, #ece319);
+            background: linear-gradient(180deg, #e63636, #ece319);
         background-clip: text;
         color: transparent;
         font-weight: bold;

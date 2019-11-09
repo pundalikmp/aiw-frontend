@@ -25,14 +25,14 @@ html body {
 }
 
 .mat-tab-label-active {
-    background: linear-gradient(-90deg, #e810f1, #ece319);
+    background: linear-gradient(-90deg, #e63636, #ece319);
     font-weight: 700;
     font-size: 16px;
     color: white;
 }
 
 .mat-ink-bar {
-    background: linear-gradient(-90deg, #e810f1, #ece319);
+    background: linear-gradient(-90deg, #e63636, #ece319);
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
@@ -96,15 +96,15 @@ html body {
 }
 .statcounter {
     position: absolute;
-    top: 1px;
-    right: 0px;
+    bottom: 0;
+    left: 25px;
 }
 
 .visits {
     @extend .statcounter;
-    right: 70px;
-    top: 0;
-    background: linear-gradient(#e810f1, #ece319);
+    left: 0;
+    bottom: 2px;
+    background: linear-gradient(#e63636, #ece319);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
